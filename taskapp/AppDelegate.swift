@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // アプリがフォアグラウンドの時に通知を受け取ると呼ばれるメソッド --- ここから ---
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.sound, .alert])
-    } // --- ここまで追加 ---
+    } // --- ここまで ---
     
     
 

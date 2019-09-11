@@ -8,10 +8,14 @@
 
 import UIKit
 import RealmSwift   // データベース
-import UserNotifications
+import UserNotifications    //通知許可リクエスト
 
 
+//↓tableViewを追加したからUITableViewDelegate, UITableViewDataSourceを追加
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     let realm = try! Realm()  //　Realmインスタンスを取得する
@@ -22,38 +26,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
     
-    
+    //▼▼▼ここは何のメソッド？
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     
-    // segue で画面遷移する時に呼ばれる
+    // prepareはタスク入力画面に遷移する際にデータを渡す。segueで画面遷移する時に呼ばれる
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let inputViewController:InputViewController = segue.destination as! InputViewController
-        
         if segue.identifier == "cellSegue" {
             let indexPath = self.tableView.indexPathForSelectedRow
             inputViewController.task = taskArray[indexPath!.row]
         } else {
             let task = Task()
             task.date = Date()
-            
             let allTasks = realm.objects(Task.self)
             if allTasks.count != 0 {
                 task.id = allTasks.max(ofProperty: "id")! + 1
             }
-            
             inputViewController.task = task
         }
     }
     
     
-    // 入力画面から戻ってきた時に TableView を更新させる
+    // viewWillAppearは入力画面から戻ってきた時に TableView を更新させるメソッド
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -89,15 +89,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "cellSegue",sender: nil)
     }
-    
     // セルが削除が可能なことを伝えるメソッド
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)-> UITableViewCell.EditingStyle {
         return .delete
     }
-    
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         // --- タスクを削除するときに通知をキャンセルする ---
         if editingStyle == .delete {
             // 削除するタスクを取得する
