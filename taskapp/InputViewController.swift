@@ -11,10 +11,10 @@ import RealmSwift   //データベース
 import UserNotifications  //ローカル通知の内容を設定する
 
 class InputViewController: UIViewController {
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentsTextView: UITextView!
+    @IBOutlet weak var titleTextField: UITextField! //タイトル入力するテキスト部分
+    @IBOutlet weak var contentsTextView: UITextView!    //内容を入力するテキスト部分
     @IBOutlet weak var datePicker: UIDatePicker!    //データピッカーは日付出すやつ
-    @IBOutlet weak var categoryInput: UITextField!  //カテゴリー入力するインプットテキスト
+    @IBOutlet weak var categoryInput: UITextField!  //カテゴリー入力するテキスト部分
     @IBOutlet weak var saveButton: UIButton!    //保存するボタン
     @IBOutlet weak var cancelButton: UIButton!  //キャンセルボタン
     
