@@ -18,7 +18,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!  //テーブルビューをアウトレットした
     
-    let realm = try! Realm()  //　Realmインスタンスを取得する
+    //　Realm(レルム)のインスタンス？？
+    lazy var realm:Realm = {
+        return try! Realm()
+    }()
+    
     
     // DB内のタスクが格納されるリスト。
     // 日付近い順\順でソート：降順
