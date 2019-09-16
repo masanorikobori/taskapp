@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!  //テーブルビューをアウトレットした
     
     let realm = try! Realm()  //　Realmインスタンスを取得する
     
@@ -26,12 +26,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
     
-    //▼▼▼ここは何のメソッド？
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = self   //ビューコントローラーからテーブルビューにアクセスする
+        tableView.dataSource = self //これをしないと、テーブルビューの設定がここから下でできない
     }
     
     

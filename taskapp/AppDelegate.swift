@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications    //ユーザーに通知を出す
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 

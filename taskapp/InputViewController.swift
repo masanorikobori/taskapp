@@ -13,7 +13,11 @@ import UserNotifications  //ローカル通知の内容を設定する
 class InputViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!    //データピッカーは日付出すやつ
+    @IBOutlet weak var categoryInput: UITextField!  //カテゴリー入力するインプットテキスト
+    @IBOutlet weak var saveButton: UIButton!    //保存するボタン
+    @IBOutlet weak var cancelButton: UIButton!  //キャンセルボタン
+    
     
     let realm = try! Realm()
     var task: Task!
@@ -87,6 +91,11 @@ class InputViewController: UIViewController {
         // キーボードを閉じる
         view.endEditing(true)
     }
+
+    
+    
+    
+    
 }
 
 
