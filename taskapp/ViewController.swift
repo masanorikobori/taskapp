@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift   // データベース
+import RealmSwift   // データベースのレルム
 import UserNotifications    //通知許可リクエスト
 
 

@@ -34,6 +34,7 @@ class InputViewController: UIViewController {
         datePicker.date = task.date
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {
             self.task.title = self.titleTextField.text!
@@ -45,6 +46,8 @@ class InputViewController: UIViewController {
         setNotification(task: task)
         super.viewWillDisappear(animated)
     }
+    
+    
     
     // タスクのローカル通知を登録する --- ここから ---
     func setNotification(task: Task) {
