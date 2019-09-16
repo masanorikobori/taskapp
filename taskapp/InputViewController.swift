@@ -39,6 +39,7 @@ class InputViewController: UIViewController {
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
             self.task.date = self.datePicker.date
+            self.task.category = self.categoryInput.text!
             self.realm.add(self.task, update: true)
         }
         setNotification(task: task)
