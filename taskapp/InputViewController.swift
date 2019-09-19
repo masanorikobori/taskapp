@@ -29,12 +29,15 @@ class InputViewController: UIViewController {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
+        //入力した内容を表示するコード
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date
+        categoryInput.text = task.category
     }
     
     
+    //画面が表示されなくなる直前に呼ばれる
     override func viewWillDisappear(_ animated: Bool) {
         try! realm.write {
             self.task.title = self.titleTextField.text!
