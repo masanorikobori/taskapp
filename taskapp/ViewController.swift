@@ -14,8 +14,6 @@ import UserNotifications    //通知許可リクエスト
 //↓tableViewを追加したからUITableViewDelegate, UITableViewDataSourceを追加
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-    
     @IBOutlet weak var tableView: UITableView!  //テーブルビューをアウトレットした
     
     //　Realm(レルム)のインスタンス？？
