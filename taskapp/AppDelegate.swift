@@ -25,16 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         } // --- ここまで ---
         center.delegate = self
         
-        // オブジェクト(カテゴリー)を追加するときは、レルムにはマイグレーションとスキーマファイルのバージョン設定が必要らしい
-  //      let config = Realm.Configuration(
-   //         schemaVersion: 1,
-   //         migrationBlock: { migration, oldSchemaVersion in
-   //             if (oldSchemaVersion < 1) {}
-    //    })
-    //    Realm.Configuration.defaultConfiguration = config
-        // レルムの追加コードここまで
-        
-
         return true
     }
     
