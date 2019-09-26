@@ -53,8 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             inputViewController.task = task
         }
     }
-    
-    
+     
     // viewWillAppearは入力画面から戻ってきた時に TableView を更新させるメソッド
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
