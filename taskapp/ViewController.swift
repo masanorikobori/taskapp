@@ -157,7 +157,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             testSearchBar.text = testSearchBar.text
         
             let db = try! Realm()
-            
+            //レルムからフィルターをかけて、カテゴリーの内容をひっぱる
             taskArray = db.objects(Task.self).filter("category = %@", testSearchBar.text!)
             
             // tableViewを再表示する。
@@ -169,9 +169,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 testSearchBar.setShowsCancelButton(true, animated: true)
                 return true
             }
-            
-            
-            
+   
         }
     
 }
