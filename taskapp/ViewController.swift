@@ -12,7 +12,7 @@ import UserNotifications    //通知許可リクエスト
 
 
 //↓tableViewを追加したからUITableViewDelegate, UITableViewDataSourceを追加
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!  //テーブルビューをアウトレットした
     
@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         tableView.delegate = self   //ビューコントローラーからテーブルビューにアクセスする
         tableView.dataSource = self //これをしないと、テーブルビューの設定がここから下でできない
+        testSearchBar.delegate = self
     }
     
     
@@ -151,7 +152,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } // --- ここまで変更 ---
     
     
-    
+        func searchBarSearchButtonClicked(_searchBar: UISearchBar) {
+            
+        }
     
 }
 }
