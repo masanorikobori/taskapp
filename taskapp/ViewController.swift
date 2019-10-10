@@ -18,26 +18,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // ▼▼▼ここから検索窓のコード▼▼▼
     @IBOutlet weak var testSearchBar: UISearchBar!  //検索窓をアウトレットした
-    //↓データ
-    let dataList = ["カテゴリ１",
-                    "カテゴリ２",
-                    "カテゴリ３",
-                    "カテゴリ４"]
-    
     
     //データを返すメソッド
     private func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell {
         
         //セルを取得する。
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for:indexPath as IndexPath) as UITableViewCell
-        
-        cell.textLabel?.text = dataList[indexPath.row]
+      
+        let taskTitle = taskArray[indexPath.row]
+        cell.textLabel?.text = taskTitle.title
         return cell
     }
     
     //データの個数を返すメソッド
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        return dataList.count
+        return taskArray.count
     }
     // ▲▲▲検索窓ここまで▲▲▲
     
@@ -161,7 +156,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //入力した値を設定
             testSearchBar.text = testSearchBar.text
         
-            _ = try! Realm()
+            let db = try! Realm()
+            
+            taskArray = db.objects(Task.self).filter("category = %@", testSearchBar.text!)
             
             // tableViewを再表示する。
             tableView.reloadData()
