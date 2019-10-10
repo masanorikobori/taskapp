@@ -156,13 +156,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //入力した値を設定
             testSearchBar.text = testSearchBar.text
         
-            let db = try! Realm()
+            //var db = try! Realm()
+            
             //レルムからフィルターをかけて、カテゴリーの内容をひっぱる
-            taskArray = db.objects(Task.self).filter("category = %@", testSearchBar.text!)
+            //taskArray = db.objects(Task.self).filter("category = %@", testSearchBar.text!)
+            
+            // NSPredicateを使って検索条件を指定します
+            let predicate = NSPredicate(format: "category = %@", testSearchBar.text!)
+            taskArray = realm.objects(Task.self).filter(predicate)
             
             // tableViewを再表示する。
             tableView.reloadData()
-            
+        }
+        
             //検索バーで入力する時
             func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
                 //キャンセルボタンを表示
@@ -170,7 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return true
             }
    
-        }
+        
     
 }
 }
