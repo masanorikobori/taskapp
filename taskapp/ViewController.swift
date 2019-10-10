@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         tableView.delegate = self   //ビューコントローラーからテーブルビューにアクセスする
         tableView.dataSource = self //これをしないと、テーブルビューの設定がここから下でできない
-        testSearchBar.delegate = self
+        testSearchBar.delegate = self   //サーチバーのデリゲートを設定
     }
     
     
@@ -151,8 +151,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } // --- ここまで変更 ---
     
-    
+        //↓検索ボタン押下時の呼び出しメソッド
         func searchBarSearchButtonClicked(_searchBar: UISearchBar) {
+            testSearchBar.endEditing(true)
+            // プレスフォルダーを設定する。
+            testSearchBar.placeholder = "入力してください。"
+            // 検索結果表示ボタン表示を設定
+            testSearchBar.showsSearchResultsButton = true
+            //入力した値を設定
+            testSearchBar.text = testSearchBar.text
+        
+            _ = try! Realm()
+            
+            // tableViewを再表示する。
+            tableView.reloadData()
+            
+            //検索バーで入力する時
+            func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+                //キャンセルボタンを表示
+                testSearchBar.setShowsCancelButton(true, animated: true)
+                return true
+            }
+            
+            
             
         }
     
