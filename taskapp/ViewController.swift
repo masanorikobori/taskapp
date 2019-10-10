@@ -155,7 +155,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         func searchBarSearchButtonClicked(_searchBar: UISearchBar) {
             testSearchBar.endEditing(true)
             // プレスフォルダーを設定する。
-            testSearchBar.placeholder = "入力してください。"
+            testSearchBar.placeholder = "カテゴリーを検索します"
             // 検索結果表示ボタン表示を設定
             testSearchBar.showsSearchResultsButton = true
             //入力した値を設定
