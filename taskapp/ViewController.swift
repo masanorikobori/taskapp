@@ -34,10 +34,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
         return taskArray.count
     }
-    // ▲▲▲検索窓ここまで▲▲▲
-    
-    
-    
+    // ▲▲▲検索窓ここまで▲▲
+
     
     
     //　Realm(レルム)のインスタンス？？
@@ -176,7 +174,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             testSearchBar.setShowsCancelButton(true, animated: true)
             return true
         }
-        
+    
     }
 
 
