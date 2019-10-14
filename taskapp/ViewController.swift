@@ -13,7 +13,7 @@ import UserNotifications    //通知許可リクエスト
 
 //↓tableViewを追加したからUITableViewDelegate, UITableViewDataSourceを追加
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!  //テーブルビューをアウトレットした
     
     // ▼▼▼ここから検索窓のコード▼▼▼
@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //セルを取得する。
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for:indexPath as IndexPath) as UITableViewCell
-      
+        
         let taskTitle = taskArray[indexPath.row]
         cell.textLabel?.text = taskTitle.title
         return cell
@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ▲▲▲検索窓ここまで▲▲▲
     
     
-
+    
     
     
     //　Realm(レルム)のインスタンス？？
@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             inputViewController.task = task
         }
     }
-     
+    
     // viewWillAppearは入力画面から戻ってきた時に TableView を更新させるメソッド
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -144,8 +144,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("---------------/")
                 }
             }
+        }
         } // --- ここまで変更 ---
-    
+        
         //↓検索ボタン押下時の呼び出しメソッド
         func searchBarSearchButtonClicked(_searchBar: UISearchBar) {
             testSearchBar.endEditing(true)
@@ -155,7 +156,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             testSearchBar.showsSearchResultsButton = true
             //入力した値を設定
             testSearchBar.text = testSearchBar.text
-        
+            
             //var db = try! Realm()
             
             //レルムからフィルターをかけて、カテゴリーの内容をひっぱる
@@ -169,14 +170,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.reloadData()
         }
         
-            //検索バーで入力する時
-            func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-                //キャンセルボタンを表示
-                testSearchBar.setShowsCancelButton(true, animated: true)
-                return true
-            }
-   
+        //検索バーで入力する時
+        func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+            //キャンセルボタンを表示
+            testSearchBar.setShowsCancelButton(true, animated: true)
+            return true
+        }
         
-    
-}
-}
+    }
+
+
